@@ -1,10 +1,22 @@
 import * as PIXI from 'pixi.js';
 import _bunny from '../assets/bunnys.png';
 
+const newStyle = document.createElement('style');
+const style = '* {padding: 0; margin: 0}';
+newStyle.appendChild(document.createTextNode(style));
+document.head.appendChild(newStyle);
+
 // The application will create a renderer using WebGL, if possible,
 // with a fallback to a canvas render. It will also setup the ticker
 // and the root stage PIXI.Container
 const app = new PIXI.Application();
+app.renderer.view.style.position = 'absolute';
+app.renderer.view.style.display = 'block';
+app.renderer.resize(window.innerWidth, window.innerHeight);
+
+window.addEventListener('resize', function(event) {
+  app.renderer.resize(window.innerWidth, window.innerHeight);
+});
 
 // The application will create a canvas element for you that you
 // can then insert into the DOM
