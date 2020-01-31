@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js';
-import _bunny from '../assets/bunny.png';
+import _bunny from '../assets/bunnys.png';
 
 // The application will create a renderer using WebGL, if possible,
 // with a fallback to a canvas render. It will also setup the ticker
