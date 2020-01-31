@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Christof/ggjg20/issues"
   },
-  "homepage": "https://github.com/Christof/ggjg20#readme"
+  "homepage": "https://github.com/Christof/ggjg20#readme",
+  "dependencies": {
+    "pixi.js": "^5.2.1"
+  }
 }
