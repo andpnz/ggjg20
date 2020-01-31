@@ -1,26 +1,32 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "index.js"
   },
-  externals: {},
+  externals: {
+    "pixi.js": "PIXI"
+  },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, "dist"),
     compress: true,
     port: 9000
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({ title: "little planet", template: "index.html" }),
+    new CopyPlugin([{ from: "./src/pixi.js", to: "pixi.js" }])
+  ],
   module: {
     rules: [
       {
         test: /\.png/,
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          name: '[path]/[name].[ext]'
+          name: "[path]/[name].[ext]"
         }
       }
     ]
